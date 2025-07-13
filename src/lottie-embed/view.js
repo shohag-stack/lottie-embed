@@ -21,5 +21,34 @@
  */
 
 /* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-lottie-embed block)' );
+
+import lottie from "lottie-web";
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    const blocks = document.querySelectorAll(".wp-block-create-block-lottie-embed")
+    blocks.forEach((block) => {
+        const container = block.querySelector(".lottie-animation");
+        const jsonUrl = block.getAttribute("data-json-url")
+        const bgColor = block.getAttribute('data-bg');
+
+        if (!block || !jsonUrl) return;
+        if (bgColor) {
+			container.style.backgroundColor = bgColor;
+		}
+
+		// Clear any previous animation (if any)
+		container.innerHTML = '';
+
+		// Load the Lottie animation
+		lottie.loadAnimation({
+			container: container,
+			renderer: 'svg',
+			loop: true, // You can change this if needed (or set from data-*)
+			autoplay: true,
+			path: jsonUrl,
+		});
+
+    })
+})
+
 /* eslint-enable no-console */

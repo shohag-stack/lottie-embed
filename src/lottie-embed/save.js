@@ -15,10 +15,17 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({attributes}) {
+
+	const { jsonUrl, containerBg } = attributes;
+	const blockProps = useBlockProps.save({
+		"data-json-url": attributes.jsonUrl,
+		"data-bg": attributes.containerBg,	
+	});
+	
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Lottie Embed – hello from the saved content!' }
-		</p>
+		<div { ...blockProps }>
+			<div className="lottie-animation" style={{ backgroundColor: containerBg }}></div>
+		</div>
 	);
 }

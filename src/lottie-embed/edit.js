@@ -25,8 +25,8 @@ export default function Edit({ attributes, setAttributes }) {
 				autoplay: autoPlay,
 				path: jsonUrl,
 			})
-			lottie.setSpeed(speed); // Set the speed of the animation
-			lottie.setDirection(direction);
+			animation.setSpeed(speed); // Set the speed of the animation
+			animation.setDirection(direction);
 
 
 			return () => {

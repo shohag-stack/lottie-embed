@@ -17141,8 +17141,8 @@ function Edit({
         autoplay: autoPlay,
         path: jsonUrl
       });
-      lottie_web__WEBPACK_IMPORTED_MODULE_6___default().setSpeed(speed); // Set the speed of the animation
-      lottie_web__WEBPACK_IMPORTED_MODULE_6___default().setDirection(direction);
+      animation.setSpeed(speed); // Set the speed of the animation
+      animation.setDirection(direction);
       return () => {
         if (animation) {
           animation.destroy(); // Clean up the animation instance
@@ -17331,10 +17331,25 @@ __webpack_require__.r(__webpack_exports__);
  * @return {Element} Element to render.
  */
 
-function save() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
-    children: 'Lottie Embed – hello from the saved content!'
+function save({
+  attributes
+}) {
+  const {
+    jsonUrl,
+    containerBg
+  } = attributes;
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
+    "data-json-url": attributes.jsonUrl,
+    "data-bg": attributes.containerBg
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    ...blockProps,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "lottie-animation",
+      style: {
+        backgroundColor: containerBg
+      }
+    })
   });
 }
 
